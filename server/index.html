@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Nashua River Rail Trail</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js'></script>
+<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css" rel="stylesheet" />
+<link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+
+<style>
+	#menu {
+	background: #fff;
+	position: absolute;
+	z-index: 1;
+	top: 10px;
+	right: 10px;
+	border-radius: 3px;
+	width: 150px;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	font-family: 'Open Sans', sans-serif;
+	}
+	 
+	#menu div{
+	font-size: 13px;
+	color: #404040;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	text-align: left;
+	}
+	 
+	#menu div:last-child {
+	border: none;
+	}
+	 
+	#menu div:hover {
+		background-color: #f8f8f8;
+		color: #404040;
+	}
+	 
+	#menu div.active {
+		background-color: #3887be;
+		color: #ffffff;
+	}
+	 
+	#menu div.active:hover {
+		background: #3074a4;
+	}
+
+	.my-custom-control{
+	  color: #0078A8;
+	  background-image: url(layers.png);
+	  background-size: 29px;
+	  background-color:white;
+	  padding: 6px;
+	  border-radius: 4px;
+	  margin: 1px;
+	  height: 32px;
+	  width: 32px;
+	}
+
+	.my-custom-control.collapse{
+		display:block;
+	}
+
+	.my-custom-control.expand{
+		display:none;
+	}
+
+	#menu.collapse{
+		display:none;
+	}
+
+	#menu.expand{
+		display:block;
+	}
+
+.detail-info {
+	margin-top:5px;
+	font-size:14px;
+	}
+.infoControl{
+display:none;
+	}
+</style>
+<script src='config.js'></script>
+<script src='js/controls/infoPanel.js'></script>
+<script src='js/controls/zoom.js'></script>
+<script src='js/controls/basemapSwitch.js'></script>
+<link href="css/app.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+	<nav id="menu" class="collapse"></nav>
+	<div id="map">
+		<div id="infoPanelDiv"></div>
+	</div>
+
+<script>
+
+	var parkingMarkers=[], InfoMarkers=[];
+	var toggleableLayerIds = ['ZoomInOverlay', 'ZoomOutOverlay', 'Parking','Info','Polygon','Rail Trail'];
+	var toggleableLayerIds2 = ['ZoomInOverlay', 'ZoomOutOverlay','Polygon'];
+	var zoomThreshold = 13, zoomThreshold2=10;
+	var myLayerControl;
+	var layerList = ['ZoomInOverlay', 'ZoomOutOverlay','Polygon',,'Rail Trail','parking','info']
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = Config.APIKey;
+	var map = new mapboxgl.Map({
+	container: 'map',
+	style: Config.baseStyle,
+	zoom: 11,
+	center: [-71.574899, 42.635893]
+	});
+
+	
+
+	map.on('load', function() {
+
+
+		// add source and layer for contours
+		map.addSource('contours', {
+			type: 'vector',
+			url: 'mapbox://mapbox.mapbox-terrain-v2'
+		});
+		map.addLayer({
+			'id': 'contours',
+			'type': 'line',
+			'source': 'contours',
+			'source-layer': 'contour',
+			'layout': {
+				'visibility': 'invisible',
+				'line-join': 'round',
+				'line-cap': 'round'
+			},
+			'paint': {
+				'line-color': '#877b59',
+				'line-width': 1
+			}
+		});
+
+		//trace layer
+		map.addSource('traceMap',{
+			'type':'image',
+			'url':Config.filename,
+			'coordinates': Config.coordinates
+			// [Config.coordinates.west, Config.coordinates.south],
+			// [Config.coordinates.east,Config.coordinates.south],
+			// [Config.coordinates.east,Config.coordinates.north],
+			// [Config.coordinates.west,Config.coordinates.north]
+
+			// [-71.376873, 43.692226],
+			// [-71.269592, 43.692173],
+			// [-71.269526, 43.647296],
+			// [-71.376625, 43.647083]
+			
+		})
+
+		map.addLayer({
+			'id': 'traceMap',
+			'type': 'raster',
+			'source': 'traceMap',
+			'layout': {
+				// make layer visible by default
+				'visibility': 'visible'
+			},
+			'source-layer': 'traceMap'
+		});
+
+		map.addSource('ZoomInOverlay', {
+			'type': 'image',
+			'url': 'zoomed-in-overlay2b.png',
+			'coordinates': [
+			//[-70.376873, 43.692226],
+			//[-70.269592, 43.692173],
+			//[-70.269526, 43.647296],
+			//[-70.376625, 43.647083]
+			]
+		});
+
+		map.addLayer({
+		'id': 'ZoomInOverlay',
+		'type': 'raster',
+		'source': 'ZoomInOverlay',
+		'layout': {
+		// make layer visible by default
+		'visibility': 'visible'
+		},
+		'source-layer': 'ZoomInOverlay'
+		});
+
+		map.addSource('ZoomOutOverlay', {
+			'type': 'image',
+			'url': 'zoomed-out-overlay.jpg',
+			'coordinates': [
+			//[-70.376873, 43.692226],
+			//[-70.269592, 43.692173],
+			//[-70.269526, 43.647296],
+			//[-70.376625, 43.647083]
+			]
+		});
+
+		map.addLayer({
+		'id': 'ZoomOutOverlay',
+		'type': 'raster',
+		'source': 'ZoomOutOverlay',
+		'layout': {
+		// make layer visible by default
+		'visibility': 'visible'
+		},
+		'source-layer': 'ZoomOutOverlay'
+		});
+
+		map.on('click', 'ZoomOutOverlay', function(e) {
+			//zoom to layer
+			if(Draw.getMode() !== 'draw_line_string'||Draw.getMode() !== 'draw_polygon')
+				map.zoomTo(zoomThreshold+1, {duration: 2000});
+
+		});
+
+		// Add zoom and rotation controls to the map.
+		map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+		var Draw = new MapboxDraw({
+			displayControlsDefault: false,
+			controls: {
+				polygon: true,
+				line_string: true,
+				trash: true
+			}
+		});
+
+		map.addControl(Draw, 'top-left');
+
+		var infoPanel=new InfoPanel('infoPanelDiv',null,{});
+		//map.addControl(infoPanel);
+
+		map.addControl(
+			new mapboxgl.GeolocateControl({
+					positionOptions: {
+						enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			})
+			, 'top-left'
+		);
+
+		map.on('draw.create', updateArea);
+		map.on('draw.delete', updateArea);
+		map.on('draw.update', updateArea);
+
+		map.on('click',function(e){
+			if(Draw.getMode() === 'draw_line_string'||Draw.getMode() === 'draw_polygon'){
+				//update info panel
+				if(Draw.getAll().features){
+					const features = Draw.getAll().features;
+					const feature = features[features.length-1];
+					if(feature){
+						var coordinates = feature.geometry.coordinates;
+						var text = "";
+						if(feature.geometry.type == 'Polygon'){
+							coordinates = coordinates[0];
+							for (var i = 0; i< coordinates.length; i++) {
+								text += ''+coordinates[i][0] + ', ' + coordinates[i][1]+'\n';
+							}
+							infoPanel.GeojsonText.value = JSON.stringify(feature.geometry);
+							infoPanel.CoordinateText.value = text;
+						}
+						else{
+							for (var i = 0; i< coordinates.length; i++) {
+								text += ''+coordinates[i][0] + ', ' + coordinates[i][1]+'\n';
+							}
+							infoPanel.GeojsonText.value = JSON.stringify(feature.geometry);
+							infoPanel.CoordinateText.value = text;
+						}
+					}
+				}
+			}
+		})
+
+		function updateArea(e){
+			console.log(e);
+			//e.features[0].editing.enable();
+			if(Draw.getAll().features){
+				const features = Draw.getAll().features;
+				const feature = features[features.length-1];
+				if(feature){
+					var coordinates = feature.geometry.coordinates;
+					var text = "";
+					if(feature.geometry.type == 'Polygon'){
+						coordinates = coordinates[0];
+						for (var i = 0; i< coordinates.length; i++) {
+							text += ''+coordinates[i][0] + ', ' + coordinates[i][1]+'\n';
+						}
+						infoPanel.GeojsonText.value = JSON.stringify(feature.geometry);
+						infoPanel.CoordinateText.value = text;
+					}
+					else{
+						for (var i = 0; i< coordinates.length; i++) {
+							text += ''+coordinates[i][0] + ', ' + coordinates[i][1]+'\n';
+						}
+						infoPanel.GeojsonText.value = JSON.stringify(feature.geometry);
+						infoPanel.CoordinateText.value = text;
+					}
+				}
+			}
+		}
+
+		//load user location
+
+		//polygon layer
+		//layer source, two overlays, two markers as small polygon circles when zoomed out (in one layer) and as icons when zoomed in (in another layer), and the green-area polygon with a hole (in a third layer)? Also, what base-map tiles will you be using
+
+	
+		map.addSource('poly', {
+		  type: 'geojson',
+		  data: 'data/polygon.geojson'
+		});
+
+		map.addLayer({
+			'id': 'Polygon',
+			'type': 'fill',
+			'source': 'poly',
+			'layout': {'visibility': 'visible'},
+			'paint': {
+			'fill-color': ['get', 'color'],
+			'fill-opacity': 0.3
+			}
+		});
+
+		map.addSource('line', {
+		  type: 'geojson',
+		  data: 'data/polyline.geojson'
+		});
+
+		map.addLayer({
+			'id': 'Rail Trail',
+			'type': 'line',
+			'source': 'line',
+			'layout': {'visibility': 'visible'},
+			'paint': {
+			'line-color': ['get', 'color'],
+			'line-width': 3
+			}
+		});
+
+		//add point geojson instead of loading markers
+		map.addSource('point', {
+		  type: 'geojson',
+		  data: 'data/point.geojson'
+		});
+
+		map.addLayer({
+			'id': 'parking',
+			'type': 'circle',
+			'source': 'point',
+			'layout': {'visibility': 'visible'},
+			'paint': {
+				'circle-color': ['get', 'color'],
+				'circle-opacity': 1,
+				'circle-radius':5,
+			},
+			'filter': ['==', 'type', 'parking']
+		});
+
+		 map.addSource('info', {
+		   type: 'geojson',
+		   data: 'data/info.geojson'
+		 });
+
+		map.addLayer({
+			'id': 'info',
+			'type': 'circle',
+			'source': 'point',
+			'layout': {'visibility': 'visible'},
+			'paint': {
+				'circle-color': ['get', 'color'],
+				'circle-opacity': 1,
+				'circle-radius':5,
+			},
+			'filter': ['==', 'type', 'info']
+		});
+
+		map.addLayer({
+			'id': 'other',
+			'type': 'circle',
+			'source': 'point',
+			'layout': {'visibility': 'visible'},
+			'paint': {
+				'circle-color': ['get', 'color'],
+				'circle-opacity': 1,
+				'circle-radius':5,
+			},
+			'filter': ['==', 'type', 'otherType']
+		});
+
+		// map.setPaintProperty('Parking', 'fill-color', [
+		// 'interpolate',
+		// ['exponential', 0.5],
+		// ['zoom'],
+		// 15,
+		// '#e2714b',
+		// 22,
+		// '#eee695'
+		// ]);
+		 
+		// map.setPaintProperty('Parking', 'fill-opacity', [
+		// 'interpolate',
+		// ['exponential', 0.5],
+		// ['zoom'],
+		// 15,
+		// 0,
+		// 22,
+		// 1
+		// ]);
+		
+		//marker layer
+		//markers
+		var parkingMarker;
+		// var parkingMarker = {
+		// 	'type': 'FeatureCollection',
+		// 	'features': [
+		// 	{
+		// 		'type': 'Feature',
+		// 		'properties': {
+		// 			'message': 'Foo',
+		// 			'iconSize': [24, 24],
+		// 			'icon':'parking-icon.png',
+		// 			'zoomInIcon':'blue-dot.png',
+		// 		},
+		// 		'geometry': {
+		// 			'type': 'Point',
+		// 			'coordinates': [-70.302090,43.679103]
+		// 		}
+		// 	}]
+		// };
+
+		$.getJSON('data/parking.geojson', function(json){
+			parkingMarker=json;
+
+			// add markers to map
+			parkingMarker.features.forEach(function(marker) {
+				// create a DOM element for the marker
+				var el = document.createElement('div');
+				el.className = 'marker';
+				el.style.backgroundImage ='url(parking-icon.png)';;
+				el.style.width = marker.properties.iconSize[0] + 'px';
+				el.style.height = marker.properties.iconSize[1] + 'px';
+				el.style.backgroundSize=marker.properties.iconSize[0] + 'px';
+				 
+				el.addEventListener('click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					//window.alert(marker.properties.message);
+					var popup = new mapboxgl.Popup({ closeOnClick: false })
+					.setLngLat(marker.geometry.coordinates)//(marker._lngLat)
+					.setHTML('placeholder text')
+					.addTo(map);
+				});
+				 
+				// add marker to map
+				var newMarker = new mapboxgl.Marker(el)
+				.setLngLat(marker.geometry.coordinates)
+				.addTo(map);
+				newMarker.detailText=marker.properties.detailText;
+				parkingMarkers.push(newMarker);
+
+			});
+
+			checkZoomSetting();
+		});
+
+
+
+		var infoMarker = {
+			'type': 'FeatureCollection',
+			'features': [
+			]
+		};
+
+	
+		// map.addSource('points',{
+		// 	'type':'geojson',
+		// 	'data':pointMarkers
+		// })
+
+		// map.addLayer({
+		// 	'id': 'points',
+		// 	'type': 'circle',
+		// 	'source': 'points',
+		// 	'paint': {
+		// 		'circle-color':'#0000FF',
+		// 		'circle-radius':5,
+		// 	}
+		// });
+		 
+		 
+		
+
+		infoMarker.features.forEach(function(marker) {
+			// create a DOM element for the marker
+			var el = document.createElement('div');
+			el.className = 'marker';
+			el.style.backgroundImage = 'url(info-icon.png)';
+			el.style.width = marker.properties.iconSize[0] + 'px';
+			el.style.height = marker.properties.iconSize[1] + 'px';
+			el.style.backgroundSize=marker.properties.iconSize[0] + 'px';
+			 
+			el.addEventListener('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				//window.alert(marker.properties.message);
+				var popup = new mapboxgl.Popup({ closeOnClick: false })
+				.setLngLat(marker.geometry.coordinates)
+				.setHTML('<div>'+marker.properties.detailText+'</div>'+'')
+				.addTo(map);
+			});
+			 
+			// add marker to map
+			var newMarker = new mapboxgl.Marker(el)
+			.setLngLat(marker.geometry.coordinates)
+			.addTo(map);
+
+			InfoMarkers.push(newMarker);
+
+		});
+
+		//layer control
+
+		class MyLayerControl {
+		  onAdd(map){
+		    this.container = document.createElement('div');
+		    this.container.classList.add('mapboxgl-ctrl');
+		    this.container.classList.add('mapboxgl-ctrl-group');
+
+		    this.btn = document.createElement('button');
+		    this.btn.setAttribute('type', 'button');
+		    this.btn.textContent=" ";
+		    this.btn.classList.add('my-custom-control');
+		    this.btn.classList.add('collapse');
+
+		    this.container.appendChild(this.btn);
+
+		    this.map = map;
+		    var that=this;
+		    this.btn.addEventListener('mouseover', () => {
+		      that.onClick();
+		    });
+
+		    return this.container;
+		  }
+		  onRemove(){
+		    this.container.parentNode.removeChild(this.container);
+		    this.map = undefined;
+		  }
+
+		  onClick(){
+		  	this.btn.classList.remove('collapse');
+		  	this.btn.classList.add('expand');
+		  	if(this.menu){
+		  		this.menu.classList.remove('collapse');
+		  		this.menu.classList.add('expand');
+		  	}
+		  }
+
+		  onHide(){
+		  	this.btn.classList.add('collapse');
+		  	this.btn.classList.remove('expand');
+		  	if(this.menu){
+		  		this.menu.classList.add('collapse');
+		  		this.menu.classList.remove('expand');
+		  	}
+		  }
+		}
+
+		class MyLayerControl2 {
+		  onAdd(map){
+		    this.container = document.createElement('div');
+		    this.container.classList.add('mapboxgl-ctrl');
+		    this.container.classList.add('mapboxgl-ctrl-group');
+		    this.container.classList.add('mapboxgl-ctrl-zoom');
+		    this.zoomIn = document.createElement('button');
+		    this.zoomIn.setAttribute('type', 'button');
+		    this.zoomIn.textContent="zoomin";
+		    //this.zoomIn.appendChild(iconPlus());
+		    this.zoomOut = document.createElement('button');
+		    this.zoomOut.setAttribute('type', 'button');
+		    this.zoomOut.textContent="zoomOut";
+		    //this.zoomOut.appendChild(iconMinus());
+		    this.container.appendChild(this.zoomIn);
+		    this.container.appendChild(this.zoomOut);
+		    this.map = map;
+		    this.zoomIn.addEventListener('click', () => {
+		      this.map.zoomIn();
+		    });
+		    this.zoomOut.addEventListener('click', () => {
+		      this.map.zoomOut();
+		    });
+		    return this.container;
+		  }
+		  onRemove(){
+		    this.container.parentNode.removeChild(this.container);
+		    this.map = undefined;
+		  }
+
+		}
+
+		myLayerControl = new MyLayerControl();
+		var layers = document.getElementById('menu');
+		myLayerControl.menu=layers;
+		myLayerControl.menu.addEventListener("mouseleave",function(){
+			myLayerControl.onHide();
+		});
+		layers.control=myLayerControl;
+		map.addControl(myLayerControl);
+		// myLayerControl.btn.addEventListener("mouseover", function(){
+		// 	myLayerControl.onClick();
+		// 	console.log("click")
+		// });
+		//myLayerControl.onClick();
+
+		var zoomControl = new ZoomControl();
+		map.addControl(zoomControl,"top-left");
+		
+		var basemapSwitchControl = new BasemapSwitchControl("testdiv",null,{});
+		map.addControl(basemapSwitchControl,"top-left");
+		// enumerate ids of the layers
+		menuItems=[]
+		 
+		// set up the corresponding toggle button for each layer
+		for (var i = 0; i < toggleableLayerIds.length; i++) {
+			var id = toggleableLayerIds[i];
+
+			//<div class="form-check">
+			//    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			//    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			//  </div>
+			
+			var div = document.createElement('div');
+			div.className='form-check active';
+
+			var input = document.createElement('input');
+			input.type = 'checkbox';
+			input.className='form-check-input';
+			div.input=input;
+			div.appendChild(input);
+
+			var link = document.createElement('label');
+			link.href = '#';
+			link.className = 'form-check-label';
+			link.textContent = id;
+
+			div.appendChild(link);
+			 
+			div.onclick = function(e) {
+				var clickedLayer = this.textContent;
+				e.preventDefault();
+				e.stopPropagation();
+
+				if (clickedLayer=="Info"){
+					if(InfoMarkers[0]._map){
+						InfoMarkers.forEach(function(marker){
+							marker.remove();
+						});
+						this.input.checked=false;
+						//this.className = '';
+					}
+					else{
+						InfoMarkers.forEach(function(marker){
+							marker.addTo(map);
+						});
+						//this.className = 'active';
+						this.input.checked=true;
+					}
+				}
+
+				else if (clickedLayer=="Parking"){
+					if(parkingMarkers[0]._map){
+						parkingMarkers.forEach(function(marker){
+							marker.remove();
+						});
+						//this.className = '';
+						this.input.checked=false;
+					}
+					else{
+						parkingMarkers.forEach(function(marker){
+							marker.addTo(map);
+						});
+						//this.className = 'active';
+						this.input.checked=true;
+					}
+				}
+				else{
+					var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+				 
+					// toggle layer visibility by changing the layout object's visibility property
+					if (visibility === 'visible') {
+						map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+						//this.className = '';
+						this.input.checked=false;
+					} else {
+						//this.className = 'active';
+						this.input.checked=true;
+						map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+					}
+				}
+				 
+				
+
+			
+			};
+
+			menuItems[id]=div;
+		 
+		
+			layers.appendChild(div);
+
+
+		}
+
+
+
+		//zoom behave
+		
+		map.on('zoom', function() {
+			checkZoomSetting();
+			
+		});
+
+		
+		
+
+	});
+
+	function checkZoomSetting(){
+		if (map.getZoom() > zoomThreshold) {
+			map.setLayoutProperty("ZoomOutOverlay", 'visibility', 'none');
+			map.setLayoutProperty("ZoomInOverlay", 'visibility', 'visible');
+			
+
+			//threshold2 disappear
+			//threshold1 blue dot to parking and info icon
+			parkingMarkers.forEach(function(marker){
+				
+				marker._element.style.backgroundImage='url(parking-icon.png)';
+				marker.addTo(map);
+			});
+			InfoMarkers.forEach(function(marker){
+				
+				marker._element.style.backgroundImage='url(info-icon.png)';
+				marker.addTo(map);
+			});
+
+			map.setLayoutProperty('parking', 'visibility', 'none');
+			map.setLayoutProperty('info', 'visibility', 'none');
+
+			updateMenu();
+
+			//add point layer
+
+		} else if(map.getZoom()>(zoomThreshold2+0.5)){
+			parkingMarkers.forEach(function(marker){
+				marker.remove();
+
+			});
+			InfoMarkers.forEach(function(marker){
+				marker.remove();
+
+		});
+			map.setLayoutProperty('parking', 'visibility', 'visible');
+			map.setLayoutProperty('info', 'visibility', 'visible');
+
+
+		} else {
+			map.setLayoutProperty("ZoomOutOverlay", 'visibility', 'visible');
+			map.setLayoutProperty("ZoomInOverlay", 'visibility', 'none');
+
+			parkingMarkers.forEach(function(marker){
+				marker.remove();
+			});
+			InfoMarkers.forEach(function(marker){
+				marker.remove();
+			});
+
+			map.setLayoutProperty('parking', 'visibility', 'none');
+			map.setLayoutProperty('info', 'visibility', 'none');
+
+			updateMenu();
+		}
+	}
+
+	function updateMenu(){
+		toggleableLayerIds2.forEach(function(id){
+			var visibility = map.getLayoutProperty(id, 'visibility');
+			if (visibility === 'visible') {
+				//menuItems[id].className = 'active';
+				menuItems[id].input.checked=true;
+			} else {
+				//menuItems[id].className = '';
+				menuItems[id].input.checked=false;
+			}
+
+			if(parkingMarkers[0]._map){
+				//menuItems['Parking'].className = 'active';
+				menuItems['Parking'].input.checked=true;
+			}
+			else{
+				//menuItems['Parking'].className = '';
+				menuItems['Parking'].input.checked=false;
+			}
+
+			if(InfoMarkers[0]._map){
+				//menuItems['Info'].className = 'active';
+				menuItems['Info'].input.checked=true;
+			}
+			else{
+				//menuItems['Info'].className = '';
+				menuItems['Info'].input.checked=false;
+			}
+		})
+	}
+
+	
+</script>
+ 
+</body>
+</html>

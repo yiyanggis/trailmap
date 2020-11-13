@@ -1,0 +1,145 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	
+	
+	
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57354117865148, 42.60711332071196]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57422369142778, 42.66618029161833]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5714463414181, 42.63871280290218]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.53971494196068, 42.70629831152999]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.53971494196068, 42.70629831152999]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.58397948363235, 42.62852717016503]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57931223360755, 42.629932363141194]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5899116219065, 42.561514501098486]
+		}
+	}, 
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5756594628882, 42.63238751277453]
+		}
+	}, 
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57195690613526, 42.605066164575135]
+		}
+	}]
+}

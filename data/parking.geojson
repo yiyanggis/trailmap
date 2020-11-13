@@ -1,0 +1,60 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [32, 32],
+			"icon":"parking-icon.png",
+			"zoomInIcon":"blue-dot.png",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-70.302090,43.679103]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [32, 32],
+			"icon":"parking-icon.png",
+			"zoomInIcon":"blue-dot.png",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-70.302090,43.679923]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [32, 32],
+			"icon":"parking-icon.png",
+			"zoomInIcon":"blue-dot.png",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-70.315308,43.656313]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [32, 32],
+			"icon":"parking-icon.png",
+			"zoomInIcon":"blue-dot.png",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-70.215308,43.656313]
+		}
+	}]
+}

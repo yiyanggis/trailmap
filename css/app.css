@@ -1,0 +1,208 @@
+.infoControl{
+	bottom: 60px;
+    right: 30px;
+    position: absolute;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #757575;
+    max-width: 300px;
+    z-index: 1020;
+}
+
+.infoControl .title{
+	color:yellow;
+}
+
+.infoControl label{
+	display:block;
+	color:yellow;
+}
+
+.input-group-text{
+    width:120px;
+}
+
+.layercontrol{
+    top: 60px;
+    left: 30px;
+    position: absolute;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #757575;
+}
+
+.layercontrol .title{
+    color:yellow;
+}
+
+.layercontrol label{
+    display:block;
+    color:yellow;
+}
+
+.popcontrol{
+    top: 60px;
+    left: 30px;
+    position: absolute;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #757575;
+}
+
+.popcontrol .title{
+    color:yellow;
+}
+
+.popcontrol label{
+    display:block;
+    color:yellow;
+}
+
+.flightControl{
+    top: 40px;
+    right: 30px;
+    position: absolute;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #757575;
+}
+
+.flightControl .title{
+    color:yellow;
+}
+
+.flightControl label{
+    display:block;
+    color:yellow;
+}
+
+.flcRadiusControl{
+    top: 20px;
+    left: 30px;
+    position: absolute;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #757575;
+    max-width: 300px;
+    z-index: 1020;
+}
+
+.flcRadiusControl .title{
+    color:yellow;
+}
+
+.flcRadiusControl label{
+    display:block;
+    color:yellow;
+}
+
+.hiddenView{
+    display:none;
+}
+
+.activeView{
+    display:block;
+}
+
+.terrainProfile{
+    bottom:20px;
+    width:90%;
+    margin:20px;
+    height:100px;
+    display: block;
+    position: fixed;
+    z-index: 2000;
+    background-color: white;
+    padding: 10px;
+}
+
+.profilePanel{
+    width:100%;
+    height:100%;
+    
+}
+
+.profilePanel div{
+    z-index: 1010;
+}
+
+#menu {
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    border-radius: 3px;
+    width: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-family: 'Open Sans', sans-serif;
+    }
+     
+    #menu div{
+    font-size: 13px;
+    color: #404040;
+    display: block;
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: left;
+    }
+     
+    #menu div:last-child {
+    border: none;
+    }
+     
+    #menu div:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+     
+    #menu div.active {
+        background-color: #3887be;
+        color: #ffffff;
+        padding-left: 20px;
+    }
+     
+    #menu div.active:hover {
+        background: #3074a4;
+    }
+
+    .my-custom-control{
+      color: #0078A8;
+      background-image: url(layers.png);
+      background-size: 29px;
+      background-color:white;
+      padding: 6px;
+      border-radius: 4px;
+      margin: 1px;
+      height: 32px;
+      width: 32px;
+    }
+
+    .my-custom-control.collapse{
+        display:block;
+    }
+
+    .my-custom-control.expand{
+        display:none;
+    }
+
+    #menu.collapse{
+        display:none;
+    }
+
+    #menu.expand{
+        display:block;
+    }

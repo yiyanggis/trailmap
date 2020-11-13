@@ -1,0 +1,427 @@
+
+{
+	"type": "FeatureCollection",
+	"features": [
+	
+
+
+
+	{
+				"type": "Feature",
+				"properties": {
+					"iconSize": [24, 24],
+					"icon":"icon.png",
+					"color":"#3ab5c6",
+					"type":"parking",
+					"detailText":"Scenic View and Rest Area"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.5758697068837, 42.58825687634811]
+				}
+			},{
+				"type": "Feature",
+				"properties": {
+					"iconSize": [24, 24],
+					"icon":"icon.png",
+					"color":"#f27e82",
+					"type":"parking",
+					"detailText":"Nashoba Valley Medical Center"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.5741660589885, 42.5773883544305]
+				}
+			},	{
+				"type": "Feature",
+				"properties": {
+					"iconSize": [24, 24],
+					"icon":"icon.png",
+					"color":"#be3100",
+					"type":"parking",
+					"detailText":"Prescott School Community Center"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.57019739267727, 42.607040740218565]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"iconSize": [24, 24],
+					"icon":"icon.png",
+					"color":"#9c9c9c",
+					"type":"parking",
+					"detailText":"Moison Ace Hardware"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56990529891661, 42.60664018780176]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#7c4ec8",
+					"type":"parking",
+					"detailText":"The Groton Inn"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56866620644095, 42.606689974116364]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#ff9c00",
+					"type":"parking",
+					"detailText":"The Natural Market health food store"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56982228280926, 42.607436764088106]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#ffcc00",
+					"type":"parking",
+					"detailText":"Dunkln'"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56939154822804, 42.60644783119815]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#ff9c00",
+					"type":"parking",
+					"detailText":"Country Farm Convenience Store"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56930504695279, 42.60630580522192]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#be3100",
+					"type":"parking",
+					"detailText":"Groton Public Library"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56833648144575, 42.60508127083196]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#9c9c9c",
+					"type":"parking",
+					"detailText":"Public Restroomsre"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56914672157866, 42.604403261066125]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#2cba3d",
+					"type":"parking",
+					"detailText":"Lawrence Memorial Playground"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.5683033783373, 42.603604385434636]
+				}
+			},
+			{
+				"type": "Feature",
+				"properties": {
+					"icon":"icon.png",
+					"color":"#ff9c00",
+					"type":"parking",
+					"detailText":"Mr. Mike's Mini-Mart"
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-71.56628568348802, 42.5996652242504 ]
+				}
+			},
+			{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57354117865148, 42.60711332071196]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57422369142778, 42.66618029161833]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5714463414181, 42.63871280290218]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.53971494196068, 42.70629831152999]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.53971494196068, 42.70629831152999]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.58397948363235, 42.62852717016503]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57931223360755, 42.629932363141194]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5756594628882, 42.63238751277453]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5899116219065, 42.561514501098486]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57418938083549, 42.66623651072035]
+		}
+	},{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"parking-icon.png",
+			"color":"#0000FF",
+			"detailText":"NRRT Parking",
+			"type":"parking"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57195690613526, 42.605066164575135]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"info-icon.png",
+			"color":"#31adff",
+			"detailText":"Nashua River Rail Trail info kiosk",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.58989155626116, 42.562158171340826]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"info-icon.png",
+			"color":"#31adff",
+			"detailText":"Nashua River Rail Trail info kiosk",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57307936473067, 42.606654745225285]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"info-icon.png",
+			"color":"#31adff",
+			"detailText":"Nashua River Rail Trail info kiosk",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57374202020513, 42.66651617827955]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"coffee-icon.png",
+			"color":"#ffb500",
+			"detailText":"Blackbird Cafe",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.58589339875329, 42.619313027270294]
+		}
+	}, {
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"restaurant-icon.png",
+			"color":"#ffb500",
+			"detailText":"Lucias Tavola",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.58825773806639, 42.5597341379536]
+		}
+	}, {
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"info-icon.png",
+			"color":"#31adff",
+			"detailText":"Shepley Hill info kiosk?",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57396894202404,42.63429898082521]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [24, 24],
+			"icon":"info-icon.png",
+			"color":"#31adff",
+			"detailText":"Shepley Hill info kiosk?",
+			"type":"info"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.57579083491865,42.632171253477026]
+		}
+	}]
+}
+
+

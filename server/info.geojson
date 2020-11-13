@@ -1,0 +1,19 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	{
+		"type": "Feature",
+		"properties": {
+			"message": "",
+			"iconSize": [32, 32],
+			"icon":"info-icon.png",
+			"zoomInIcon":"blue-dot.png",
+			"detailImage":"kiosk.jpg",
+			"detailText":"Portland Trails"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [-71.5897951548974, 42.56202041448773]
+		}
+	}]
+}
