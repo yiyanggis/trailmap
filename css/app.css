@@ -191,6 +191,38 @@
       width: 32px;
     }
 
+
+    .button-icon-earth {
+        color: #0078A8;
+        background-image: url(../img/earth.png);
+        background-size: 18px;
+        background-color: white;
+        /* padding: 0px; */
+        border-radius: 4px;
+        margin: 5px;
+        height: 24px;
+        width: 24px;
+        background-repeat: no-repeat;
+        display: block;
+        outline: none;
+        aria-label: "satelite view";
+        /* text-align: center; */
+    }
+
+    .button-icon-map {
+        color: #0078A8;
+        background-image: url(../img/map.png);
+        background-size: 22px;
+        background-color: white;
+        padding: 0px;
+        border-radius: 4px;
+        margin: 2px;
+        height: 22px;
+        width: 28px;
+        background-repeat: no-repeat;
+        display: block;
+    }
+
     .my-custom-control.collapse{
         display:block;
     }

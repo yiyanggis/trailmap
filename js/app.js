@@ -37,10 +37,10 @@ if(data){
 map.on('load', function() {
 
 	if(window.mobileAndTabletCheck()){
-		alert('yes')
+		//alert('yes')
 	}
 	else{
-		alert('no')
+		//alert('no')
 	}
 
 	// add source and layer for contours
@@ -270,7 +270,7 @@ map.on('load', function() {
 		});
 
 		map.on('touchstart', function(e) {
-			alert('test');
+			//alert('test');
 		});
 		 
 		// Change the cursor to a pointer when the mouse is over the states layer.

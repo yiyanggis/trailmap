@@ -22,5 +22,7 @@ Config = {
 	"textBackGroundColor":null,
 	"textFontSize":10,
 	"dataFile":"data/data.geojson",
-	"layerList":["Trail Features","Community","Local Resources","Living & Working","Visiting","Parking", "Info"]
+	"layerList":["Trail Features","Community","Local Resources","Living & Working","Visiting","Parking", "Info"],
+	"mapIconURL":"map.png",// basemap button switch to base map view
+	"earthIconURL":"earth.png" // basemap button switch to satellite view
 }

@@ -20,6 +20,21 @@ class BasemapSwitchControl {
     this.container.classList.add('mapboxgl-ctrl-zoom');
     this.btn = document.createElement('button');
     this.btn.setAttribute('type', 'button');
+    this.btn.setAttribute('aria-label','Satelite View')
+    this.btn.setAttribute('title','Satelite View')
+
+    this.icon = document.createElement('span');
+    //this.icon.classList.add('mapboxgl-ctrl');
+    //this.icon.classList.add('button');
+    //this.icon.classList.add('mapboxgl-ctrl-icon');
+    this.icon.classList.add('button-icon-earth');
+    this.btn.appendChild(this.icon);
+    if(Config){    
+        //this.icon.setAttribute('background-image','url("'+Config.earthIconURL+'")');
+        //this.icon.setAttribute('background-size','29px');
+        //this.icon.setAttribute('background-color','white');
+    }
+    
 
     this.container.appendChild(this.btn);
     this.map = map;
@@ -61,7 +76,9 @@ class BasemapSwitchControl {
             // }
             
             map.setLayoutProperty("satellite-map", 'visibility', 'visible');
-            
+            //that.btn.setAttribute('background-image','url('+Config.mapIconURL+')');
+            that.icon.classList.remove('button-icon-earth');
+            that.icon.classList.add('button-icon-map');
         }
         else{
             //that.map.setStyle(Config.baseStyle)
@@ -71,6 +88,10 @@ class BasemapSwitchControl {
             //     that.map.addLayer(that.layers[i]);
             // }
             //add layers
+
+            //that.btn.setAttribute('background-image','url('+Config.earthIconURL+')');
+            that.icon.classList.remove('button-icon-map');
+            that.icon.classList.add('button-icon-earth');
         }
     }
 
