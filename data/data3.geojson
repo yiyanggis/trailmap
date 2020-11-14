@@ -10,7 +10,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"color":"#0000FF",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
@@ -24,7 +24,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"color":"#0000FF",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
@@ -38,7 +38,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"color":"#0000FF",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
@@ -52,7 +52,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"color":"#0000FF",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
@@ -66,7 +66,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"color":"#0000FF",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
@@ -80,7 +80,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
 			},
@@ -93,7 +93,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
 			},
@@ -106,7 +106,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
 			},
@@ -120,7 +120,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
 			},
@@ -134,7 +134,7 @@ data = {
 			"properties": {
 				"message": "",
 				"iconSize": [24, 24],
-				"icon":"Parking-icon.png",
+				"icon":"icon-parking.png",
 				"detailText":"NRRT Parking",
 				"type":"Parking"
 			},
@@ -147,7 +147,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<a href="https://www.myblackbirdcafe.com/"><h4>Blackbird Cafe</h4><img src="blackbird.jpg"></a><div class="detail-Info">Stop in for an ice coffee. <br />Directions<br />(978) 272-1175</div>',
 					"type":"Info"
 				},
@@ -159,7 +159,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'Info-icon.png',
+					'icon':'icon-info.png',
 					'detailText':'Scenic View and Rest Area',
 					"type":"Trail Features"
 				},
@@ -171,7 +171,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'Info-icon.png',
+					'icon':'icon-info.png',
 					'detailText':'NRRT kiosk 1<br /><a href="https://www.mass.gov/locations/nashua-river-rail-trail"><img src="kiosk.jpg"></a>',
 					"type":"Info"
 				},
@@ -183,7 +183,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'Info-icon.png',
+					'icon':'icon-info.png',
 					'detailText':'NRRT kiosk 1<br /><a href="https://www.mass.gov/locations/nashua-river-rail-trail"><img src="kiosk.jpg"></a>',
 					"type":"Info"
 				},
@@ -196,7 +196,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'Info-icon.png',
+					'icon':'icon-info.png',
 					'detailText':'NRRT 2',
 					"type":"Recreation"
 				},
@@ -209,7 +209,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<a href="https://prescottscc.org/"><h4>Prescott School Community Center</h4></a><div class="detail-Info"></div>',
 					"type":"Community"
 				},
@@ -222,7 +222,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Moison Ace Hardware</h4>',
 					"type":"Local Resources"
 				},
@@ -235,7 +235,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>The Groton Inn</h4>',
 					"type":"Living & Working"
 				},
@@ -248,7 +248,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>The Natural Market health food store</h4>',
 					"type":"Visiting"
 				},
@@ -261,7 +261,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Dunkln\'</h4>',
 					"type":"Living & Working"
 				},
@@ -274,7 +274,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Country Farm Convenience Store</h4>',
 					"type":"Living & Working"
 				},
@@ -287,7 +287,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Groton Public Library</h4>',
 					"type":"Living & Working"
 				},
@@ -300,7 +300,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Public Restroomsre</h4>',
 					"type":"Living & Working"
 				},
@@ -313,7 +313,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Lawrence Memorial Playground</h4>',
 					"type":"Living & Working"
 				},
@@ -326,7 +326,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Mr. Mike\'s Mini-Mart</h4>',
 					"type":"Living & Working"
 				},
@@ -339,7 +339,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Moison Ace Hardware</h4>',
 					"type":"Living & Working"
 				},
@@ -351,7 +351,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<h4>Nashoba Valley Medical Center</h4>',
 					"type":"Living & Working"
 				},
@@ -364,7 +364,7 @@ data = {
 				'type': 'Feature',
 				'properties': {
 					'iconSize': [24, 24],
-					'icon':'coffee-icon.png',
+					'icon':'icon-coffee.png',
 					'detailText':'<a href="https://www.luciastavola.com/"><h4>Lucias Tavola</h4></a><div class="detail-Info">The best Italian dinner. <br />Directions<br />(978) 391-4837</div>',
 					"type":"Living & Working"
 				},
@@ -378,7 +378,7 @@ data = {
 				"properties": {
 					"message": "",
 					"iconSize": [24, 24],
-					"icon":"Info-icon.png",
+					"icon":"icon-info.png",
 					"color":"#31adff",
 					"detailText":"Shepley Hill Info kiosk?",
 					"type":"Info"
@@ -393,7 +393,7 @@ data = {
 				"properties": {
 					"message": "",
 					"iconSize": [24, 24],
-					"icon":"Info-icon.png",
+					"icon":"icon-info.png",
 					"color":"#31adff",
 					"detailText":"Shepley Hill Info kiosk?",
 					"type":"Info"

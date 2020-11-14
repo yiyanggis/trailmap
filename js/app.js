@@ -270,7 +270,17 @@ map.on('load', function() {
 		});
 
 		map.on('touchstart', function(e) {
-			//alert('test');
+			if(map.currentPopup){
+				map.currentPopup.remove();
+				map.currentPopup = null;
+			}
+		});
+
+		map.on('click', function(e) {
+			if(map.currentPopup){
+				map.currentPopup.remove();
+				map.currentPopup = null;
+			}
 		});
 		 
 		// Change the cursor to a pointer when the mouse is over the states layer.
@@ -314,6 +324,13 @@ map.on('load', function() {
 			}
 		});
 	}
+
+	//calculate distance
+	const features = polylineData.features;
+	for (var i = features.length - 1; i >= 0; i--) {
+		var tempFeature = features[i];
+		tempFeature.properties.length=turf.length(tempFeature.geometry,{units: 'miles'}).toFixed(2);
+	}
 	
 	if(polylineData){
 		map.addSource('line', {
@@ -341,8 +358,43 @@ map.on('load', function() {
 			// 	'text-radial-offset': 0.5,
 			// 	'text-justify': 'auto',
 			// }
+			// "layout":{
+			// 	"symbol-placement":"line",
+			// 	'text-field': '{name}'//['format',['get', 'text'],{},
+			// }
 
 		});
+
+		map.addLayer({
+	      "id": "symbols",
+	      "type": "symbol",
+	      "source": "line",
+	      "layout": {
+	        "symbol-placement": "line",
+	        "text-font": ["Open Sans Regular"],
+	        //"text-field": ['get', 'name'],
+	        "text-offset":[1,1],
+	        "text-field": [
+	            'format',
+	            ['get', 'name'],
+	            { 'font-scale': 1.2 },
+	            '\n     ',
+	            {},
+	            ['get', 'length'],
+	            {
+	            'font-scale': 1
+	            },
+	            ' mi'
+	        ],
+	        "text-size": 20,
+	        "text-rotate": -4,
+	        "symbol-spacing": 100,
+	        "text-allow-overlap":false
+	      },
+	      "paint":{
+	        "text-translate":[0,-20],
+	      }
+	    });
 	}
 	
 
@@ -540,20 +592,36 @@ map.on('load', function() {
 						e.preventDefault();
 						e.stopPropagation();
 						//window.alert(marker.properties.message);
+
+						if(map.currentPopup){
+							map.currentPopup.remove();
+							map.currentPopup = null;
+						}
+
 						var popup = new mapboxgl.Popup({ closeOnClick: false })
 						.setLngLat(marker.geometry.coordinates)//(marker._lngLat)
 						.setHTML(marker.properties.detailText)
 						.addTo(map);
+
+						map.currentPopup=popup;
 					});
 
 					el.addEventListener('touchstart', function(e) {
 						e.preventDefault();
 						e.stopPropagation();
 						//window.alert(marker.properties.message);
+
+						if(map.currentPopup){
+							map.currentPopup.remove();
+							map.currentPopup = null;
+						}
+						
 						var popup = new mapboxgl.Popup({ closeOnClick: false })
 						.setLngLat(marker.geometry.coordinates)//(marker._lngLat)
 						.setHTML(marker.properties.detailText)
 						.addTo(map);
+
+						map.currentPopup=popup;
 					});
 					 
 					// add marker to map
